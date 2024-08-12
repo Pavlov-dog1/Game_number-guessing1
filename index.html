@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数当てゲーム</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+        input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>数当てゲーム</h1>
+<p>1から100の間の数字を当ててください:</p>
+<input type="number" id="guess" min="1" max="100">
+<button onclick="checkGuess()">Guess</button>
+
+<p id="message"></p>
+
+<script>
+    const targetNumber = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
+
+    function checkGuess() {
+        const userGuess = parseInt(document.getElementById('guess').value);
+        const message = document.getElementById('message');
+        attempts++;
+
+        if (userGuess < targetNumber) {
+            message.textContent = "小さすぎます。もう一度挑戦してください!";
+        } else if (userGuess > targetNumber) {
+            message.textContent = "大きすぎます。もう一度挑戦してください!";
+        } else {
+            message.textContent = `正解です! あなたは${attempts}回で当てました!`;
+        }
+    }
+</script>
+
+</body>
+</html>
