@@ -1,6 +1,8 @@
 # Game_number-guessing1
 This "Number Guessing Game" is a simple game built using HTML and JavaScript. During the development process, I received support from ChatGPT. 
 
+#### URLはこちらから https://pavlov-dog1.github.io/Game_number-guessing1/
+
 ## 数当てゲームです
 私が思い浮かべた1から100の間の数字を当ててください！
 数字を入力し、推測ボタンを押してください
