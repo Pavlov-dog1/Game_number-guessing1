@@ -1,5 +1,5 @@
 # Game_number-guessing1
-A simple number guessing game using HTML and JavaScript
+This "Number Guessing Game" is a simple game built using HTML and JavaScript. During the development process, I received support from ChatGPT. 
 
 ## 数当てゲームです
 私が思い浮かべた1から100の間の数字を当ててください！
