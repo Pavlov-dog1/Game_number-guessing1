@@ -30,6 +30,12 @@
             margin-top: 20px;
             font-size: 18px;
         }
+        footer {
+            position: absolute;
+            bottom: 10px;
+            font-size: 12px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
@@ -38,11 +44,16 @@
 <p>1から100の間の数字を当ててください:</p>
 <input type="number" id="guess" min="1" max="100">
 <button onclick="checkGuess()">Guess</button>
+<button onclick="restartGame()" id="restart" style="display:none;">再挑戦</button>
 
 <p id="message"></p>
 
+<footer>
+    This "Number Guessing Game" is a simple game built using HTML and JavaScript. During the development process, I received support from ChatGPT.
+</footer>
+    
 <script>
-    const targetNumber = Math.floor(Math.random() * 100) + 1;
+    let targetNumber = Math.floor(Math.random() * 100) + 1;
     let attempts = 0;
 
     function checkGuess() {
@@ -50,13 +61,26 @@
         const message = document.getElementById('message');
         attempts++;
 
-        if (userGuess < targetNumber) {
+        if (isNaN(userGuess)) {
+            message.textContent = "有効な数字を入力してください!";
+        } else if (userGuess < 1 || userGuess > 100) {
+            message.textContent = "1から100の間の数字を入力してください!";
+        } else if (userGuess < targetNumber) {
             message.textContent = "小さすぎます。もう一度挑戦してください!";
         } else if (userGuess > targetNumber) {
             message.textContent = "大きすぎます。もう一度挑戦してください!";
         } else {
             message.textContent = `正解です! あなたは${attempts}回で当てました!`;
+            document.getElementById('restart').style.display = 'block'; // Show restart button
         }
+    }
+
+    function restartGame() {
+        targetNumber = Math.floor(Math.random() * 100) + 1; // Reset target number
+        attempts = 0; // Reset attempts
+        document.getElementById('guess').value = ''; // Clear input
+        document.getElementById('message').textContent = ''; // Clear message
+        document.getElementById('restart').style.display = 'none'; // Hide restart button
     }
 </script>
 
